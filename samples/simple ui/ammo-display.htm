@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<!-- Styles -->
+	<link href="css/shared.css" rel="stylesheet" type="text/css" />
+	
+	<!-- Scripts -->
+	<script src="js/jquery-1.6.4.min.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// Insert code here!
+			if (typeof awesomiumce3 != 'undefined')
+			{
+			} else {
+				// Let's simulate some updates here
+				setInterval("decreaseAmmoCount()", 200);
+			}
+		});
+		
+		function decreaseAmmoCount()
+		{
+			var currentAmount = $("#currentamount").text();
+			
+			currentAmount = currentAmount - 1;
+			if (currentAmount < 0)
+			{
+				currentAmount = $("#maxamount").text();
+			}
+			
+			$("#currentamount").text(currentAmount);
+			
+		}
+	</script>
+</head>
+<body>
+	<section class="simplebox" id="ammo">
+		Ammo: <span id="currentamount">200</span> / <span id="maxamount">200</span>
+	</section>
+</body>
+</html>
