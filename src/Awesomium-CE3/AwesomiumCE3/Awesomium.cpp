@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Awesomium.h"
 
-#include <Awesomium/awesomium_capi.h>
 
 CRYREGISTER_CLASS(CAwesomium)
 

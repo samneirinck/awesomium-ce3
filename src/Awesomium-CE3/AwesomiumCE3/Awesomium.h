@@ -3,6 +3,7 @@
 
 #include <CryExtension/Impl/ClassWeaver.h>
 #include <IGameFramework.h>
+#include <Awesomium/awesomium_capi.h>
 
 class CAwesomium : public IAwesomium, public IGameFrameworkListener
 {
@@ -10,7 +11,7 @@ class CAwesomium : public IAwesomium, public IGameFrameworkListener
 	CRYINTERFACE_ADD(IAwesomium)
 	CRYINTERFACE_END()
 	
-	CRYGENERATE_SINGLETONCLASS(CAwesomium, "Awesomium", 0x0, 0x1)
+	CRYGENERATE_SINGLETONCLASS(CAwesomium, "Awesomium", 0x2386a062a90e40b4, 0xbb3761084a4e5895)
 
 public:
 	// IAwesomium interface

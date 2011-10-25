@@ -5,7 +5,7 @@
 
 struct IAwesomium : public ICryUnknown
 {
-	CRYINTERFACE_DECLARE(IAwesomium, 0x0, 0x1)
+	CRYINTERFACE_DECLARE(IAwesomium, 0x2386a062a90e40b4, 0xbb3761084a4e5895)
 
 	virtual bool Init(bool enablePlugins) = 0;
 	virtual void Shutdown() = 0;
