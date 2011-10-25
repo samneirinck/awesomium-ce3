@@ -21,15 +21,23 @@ bool CAwesomium::Init(bool enablePlugins)
 		return false;
 	}
 
+	// Register our gameframework listener
 	gEnv->pGameFramework->RegisterListener(this, "AwesomiumCE3", FRAMEWORKLISTENERPRIORITY_HUD);
 
+	// Set up the base directory
+	auto gamefolder = gEnv->pCryPak->GetGameFolder();
+	m_gameFolder.reset(awe_string_create_from_ascii(gamefolder, strlen(gamefolder)));
+	awe_webcore_set_base_directory(m_gameFolder.get());
+
+	// Initialize Awesomium
 	awe_webcore_initialize(enablePlugins, true, false, awe_string_empty(), awe_string_empty(),awe_string_empty(),
 		AWE_LL_NORMAL, false, awe_string_empty(), true, awe_string_empty(), awe_string_empty(), awe_string_empty(),
 		awe_string_empty(), awe_string_empty(), awe_string_empty(), true, 0, false, false, awe_string_empty());
 
 
 	// Temp: Move to API
-
+	LoadElement("UI/AmmoDisplay.htm");
+	SetVisible(true);
 	//
 
 	return true;
@@ -90,5 +98,7 @@ int CAwesomium::LoadElement(const char* pathtoHtml)
 {
 	auto element = make_shared<CUIElement>(pathtoHtml);
 	
+	m_uiElements.push_back(element);
+
 	return 0;
 }

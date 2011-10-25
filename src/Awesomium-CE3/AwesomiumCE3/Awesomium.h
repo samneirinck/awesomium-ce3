@@ -38,6 +38,7 @@ protected:
 	bool m_bEnablePlugins;
 	bool m_bVisible;
 	std::vector<std::shared_ptr<CUIElement>> m_uiElements;
+	std::shared_ptr<awe_string> m_gameFolder;
 	
 	virtual int LoadElement(const char* pathToHtml);
 
