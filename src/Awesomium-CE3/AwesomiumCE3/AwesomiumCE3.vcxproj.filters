@@ -6,10 +6,12 @@
     <ClInclude Include="Headers\IAwesomium.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="UIElement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Awesomium.cpp" />
+    <ClCompile Include="UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Headers">

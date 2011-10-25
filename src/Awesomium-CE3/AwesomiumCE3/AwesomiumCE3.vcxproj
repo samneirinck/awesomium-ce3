@@ -87,10 +87,12 @@
     <ClInclude Include="Awesomium.h" />
     <ClInclude Include="Headers\IAwesomium.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="UIElement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Awesomium.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="UIElement.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

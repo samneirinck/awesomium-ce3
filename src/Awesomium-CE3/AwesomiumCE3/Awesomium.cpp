@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Awesomium.h"
 
-
 CRYREGISTER_CLASS(CAwesomium)
 
+using namespace std;
 CAwesomium::CAwesomium() : m_bEnablePlugins(false), m_bVisible(false)
 {
 
@@ -46,6 +46,12 @@ void CAwesomium::OnPostUpdate(float fDeltaTime)
 	if (m_bVisible)
 	{
 		awe_webcore_update();
+		for_each(begin(m_uiElements), end(m_uiElements), [&](shared_ptr<CUIElement>& e) {
+			if (e->IsVisible())
+			{
+				e->OnUpdate();
+			}
+		});
 	}
 }
 
@@ -78,4 +84,11 @@ void CAwesomium::SetVisible(bool visible)
 bool CAwesomium::IsVisible() const
 {
 	return m_bVisible;
+}
+
+int CAwesomium::LoadElement(const char* pathtoHtml)
+{
+	auto element = make_shared<CUIElement>(pathtoHtml);
+	
+	return 0;
 }

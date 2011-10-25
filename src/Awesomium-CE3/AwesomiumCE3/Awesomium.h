@@ -1,5 +1,6 @@
 #pragma once
 #include "Headers/IAwesomium.h"
+#include "UIElement.h"
 
 #include <IGameFramework.h>
 #include <Awesomium/awesomium_capi.h>
@@ -36,6 +37,9 @@ public:
 protected:
 	bool m_bEnablePlugins;
 	bool m_bVisible;
-	std::vector<std::shared_ptr<awe_webview>> m_webviews;
+	std::vector<std::shared_ptr<CUIElement>> m_uiElements;
 	
+	virtual int LoadElement(const char* pathToHtml);
+
+
 };
