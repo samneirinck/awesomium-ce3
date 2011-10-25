@@ -2,6 +2,9 @@
 #include "UIElement.h"
 
 using namespace std;
+
+awe_string* CUIElement::s_javascriptObjectName = awe_string_create_from_ascii("awesomiumce3", strlen("awesomiumce3"));
+
 CUIElement::CUIElement(const char* pathToHtml) : m_pathToHtml(pathToHtml), m_bVisible(true), m_textureId(InvalidTexture), m_width(gEnv->pRenderer->GetWidth()), m_height(gEnv->pRenderer->GetHeight())
 {
 	// Create string from path
@@ -10,8 +13,17 @@ CUIElement::CUIElement(const char* pathToHtml) : m_pathToHtml(pathToHtml), m_bVi
 	// Create our view
 	m_pWebview.reset(awe_webcore_create_webview(m_width, m_height, false));
 
-	// Load the actual page
+	// Create our javascript object
+	awe_webview_create_object(m_pWebview.get(), s_javascriptObjectName);
 	
+	// Temporary tests
+	SetObjectProperty("version", "1.0.0.0");
+	SetObjectProperty("author", "ins");
+
+	// Load the actual page
+	awe_webview_load_file(m_pWebview.get(), m_pathToHtmlString.get(), awe_string_empty());
+
+
 }
 
 
@@ -37,6 +49,20 @@ void CUIElement::OnUpdate()
 		}
 
 	}
+}
+
+void CUIElement::SetObjectProperty(const char* propertyName, const char* propertyValue)
+{
+	auto propertyNameString = awe_string_create_from_ascii(propertyName, strlen(propertyName));
+	auto propertyValueString = awe_string_create_from_ascii(propertyValue, strlen(propertyValue));
+	auto propertyJSValue = awe_jsvalue_create_string_value(propertyValueString);
+
+	
+	awe_webview_set_object_property(m_pWebview.get(), s_javascriptObjectName, propertyNameString, propertyJSValue);
+
+	awe_jsvalue_destroy(propertyJSValue);
+	awe_string_destroy(propertyValueString);
+	awe_string_destroy(propertyNameString);
 }
 
 void CUIElement::UpdateTexture()

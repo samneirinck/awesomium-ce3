@@ -11,7 +11,7 @@ public:
 	virtual void OnUpdate();
 	virtual void SetVisible(bool visible);
 	virtual bool IsVisible() const;
-
+	virtual void SetObjectProperty(const char* propertyName, const char* propertyValue);
 
 
 protected:
@@ -30,5 +30,9 @@ protected:
 	std::shared_ptr<awe_webview>  m_pWebview;
 	std::shared_ptr<awe_string> m_pathToHtmlString;
 	const unsigned char* m_pRenderBuffer;
+
+
+	static awe_string* s_javascriptObjectName;
+
 };
 
