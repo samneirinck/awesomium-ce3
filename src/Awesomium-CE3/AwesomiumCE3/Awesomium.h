@@ -1,22 +1,25 @@
 #pragma once
 #include "Headers/IAwesomium.h"
 
-#include <CryExtension/Impl/ClassWeaver.h>
 #include <IGameFramework.h>
 #include <Awesomium/awesomium_capi.h>
+#include <CryExtension/Impl/ClassWeaver.h>
 
 class CAwesomium : public IAwesomium, public IGameFrameworkListener
 {
 	CRYINTERFACE_BEGIN()
-	CRYINTERFACE_ADD(IAwesomium)
+		CRYINTERFACE_ADD(IAwesomium)
 	CRYINTERFACE_END()
 	
-	CRYGENERATE_SINGLETONCLASS(CAwesomium, "Awesomium", 0x2386a062a90e40b4, 0xbb3761084a4e5895)
+	//CRYGENERATE_SINGLETONCLASS(CAwesomium, "Awesomium", 0x2386a062a90e40b4, 0xbb3761084a4e5895)
+	CRYGENERATE_CLASS(CAwesomium, "Awesomium", 0x2386a062a90e40b4, 0xbb3761084a4e5895)
 
 public:
 	// IAwesomium interface
 	virtual bool Init(bool enablePlugins) override;
 	virtual void Shutdown() override;
+	virtual void SetVisible(bool visible) override;
+	virtual bool IsVisible() const override;
 	// -IAwesomium
 
 	// IGameFrameworkListener
@@ -32,4 +35,7 @@ public:
 
 protected:
 	bool m_bEnablePlugins;
+	bool m_bVisible;
+	std::vector<std::shared_ptr<awe_webview>> m_webviews;
+	
 };

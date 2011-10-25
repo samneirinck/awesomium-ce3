@@ -4,14 +4,13 @@
 
 CRYREGISTER_CLASS(CAwesomium)
 
-CAwesomium::CAwesomium()
+CAwesomium::CAwesomium() : m_bEnablePlugins(false), m_bVisible(false)
 {
 
 }
 
 CAwesomium::~CAwesomium()
 {
-
 }
 
 bool CAwesomium::Init(bool enablePlugins)
@@ -28,17 +27,26 @@ bool CAwesomium::Init(bool enablePlugins)
 		AWE_LL_NORMAL, false, awe_string_empty(), true, awe_string_empty(), awe_string_empty(), awe_string_empty(),
 		awe_string_empty(), awe_string_empty(), awe_string_empty(), true, 0, false, false, awe_string_empty());
 
+
+	// Temp: Move to API
+
+	//
+
 	return true;
 }
 
 void CAwesomium::Shutdown()
 {
-
+	
 }
 
 void CAwesomium::OnPostUpdate(float fDeltaTime)
 {
-
+	// We only need to update when the UI is visible
+	if (m_bVisible)
+	{
+		awe_webcore_update();
+	}
 }
 
 void CAwesomium::OnSaveGame(ISaveGame* pSaveGame)
@@ -60,4 +68,14 @@ void CAwesomium::OnActionEvent(const SActionEvent& event)
 
 void CAwesomium::OnPreRender()
 {
+}
+
+void CAwesomium::SetVisible(bool visible)
+{
+	m_bVisible = visible;
+}
+
+bool CAwesomium::IsVisible() const
+{
+	return m_bVisible;
 }

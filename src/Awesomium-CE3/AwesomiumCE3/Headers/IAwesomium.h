@@ -9,6 +9,8 @@ struct IAwesomium : public ICryUnknown
 
 	virtual bool Init(bool enablePlugins) = 0;
 	virtual void Shutdown() = 0;
+	virtual void SetVisible(bool visible) = 0;
+	virtual bool IsVisible() const = 0;
 };
 
 typedef boost::shared_ptr<IAwesomium> IAwesomiumPtr;
