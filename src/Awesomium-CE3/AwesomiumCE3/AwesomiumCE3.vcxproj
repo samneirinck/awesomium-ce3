@@ -66,7 +66,7 @@
       <AdditionalDependencies>Awesomium_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>if exist f:\Games\ce3\Bin32 copy $(TargetPath) f:\Games\ce3\Bin32</Command>
+      <Command>if exist f:\Games\ce3\Bin32 copy "$(TargetPath)" f:\Games\ce3\Bin32</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
