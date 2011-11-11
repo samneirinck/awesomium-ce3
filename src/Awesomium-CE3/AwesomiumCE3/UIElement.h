@@ -12,7 +12,7 @@ public:
 	virtual void SetVisible(bool visible);
 	virtual bool IsVisible() const;
 	virtual void SetObjectProperty(const char* propertyName, const char* propertyValue);
-
+	virtual int GetTextureId() const;
 
 protected:
 	virtual int CreateTexture();
@@ -27,8 +27,8 @@ protected:
 	int m_width;
 	int m_height;
 
-	std::shared_ptr<awe_webview>  m_pWebview;
-	std::shared_ptr<awe_string> m_pathToHtmlString;
+	awe_webview*  m_pWebview;
+	awe_string* m_pathToHtmlString;
 	const unsigned char* m_pRenderBuffer;
 
 

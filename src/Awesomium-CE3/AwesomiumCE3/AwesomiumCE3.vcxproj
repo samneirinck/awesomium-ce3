@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Awesomium.cpp" />
+    <ClCompile Include="DllMain.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="UIElement.cpp" />
   </ItemGroup>

@@ -11,6 +11,8 @@ struct IAwesomium : public ICryUnknown
 	virtual void Shutdown() = 0;
 	virtual void SetVisible(bool visible) = 0;
 	virtual bool IsVisible() const = 0;
+
+	typedef void *(*TEntryFunction)(ISystem* pSystem);
 };
 
 typedef boost::shared_ptr<IAwesomium> IAwesomiumPtr;

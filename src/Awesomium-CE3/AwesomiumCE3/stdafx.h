@@ -1,6 +1,7 @@
 #pragma once
 
 #include <CryModuleDefs.h>
+#define eCryModule eCryM_Scaleform
 
 // Insert your headers here
 #include <platform.h>
